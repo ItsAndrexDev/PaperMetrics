@@ -2,7 +2,6 @@ package org.andrexserver.papermetrics;
 
 import io.prometheus.metrics.core.metrics.Gauge;
 import io.prometheus.metrics.exporter.httpserver.HTTPServer;
-import org.andrexserver.papermetrics.Events.Events;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -17,25 +16,22 @@ import java.time.Instant;
 
 public final class Main extends JavaPlugin {
 
-    public static Gauge isRunningGauge;
-    public static Gauge serverStartTimeGauge;
-    public static Gauge tpsGauge;
-    public static Gauge memoryUsageGauge;
-    public static Gauge maxMemoryGauge;
-    public static Gauge threadCountGauge;
-    public static Gauge entityCountGauge;
-    public static Gauge onlinePlayersGauge;
-    public static Gauge playerPingGauge;
-    public static Gauge chunkCountGauge;
+    private Gauge isRunningGauge;
+    private Gauge serverStartTimeGauge;
+    private Gauge tpsGauge;
+    private Gauge memoryUsageGauge;
+    private Gauge maxMemoryGauge;
+    private Gauge threadCountGauge;
+    private Gauge entityCountGauge;
+    private Gauge onlinePlayersGauge;
+    private Gauge playerPingGauge;
+    private Gauge chunkCountGauge;
 
     private HTTPServer httpServer;
 
     @Override
     public void onEnable() {
         getLogger().info("PaperMetrics enabled.");
-
-        getServer().getPluginManager().registerEvents(new Events(), this);
-        saveDefaultConfig();
 
         registerMetrics();
         startHttpServer();
