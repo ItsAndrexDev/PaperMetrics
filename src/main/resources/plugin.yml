@@ -1,0 +1,6 @@
+name: PaperMetrics
+version: '1.0-SNAPSHOT'
+main: org.andrexserver.papermetrics.Main
+api-version: '1.21'
+authors: [ Andrex ]
+description: Server scraper for Prometheus
